@@ -13,9 +13,9 @@ public final class OutputView {
     System.out.println(Message.INPUT_COACH_NAMES);
   }
 
-  public static void printInputCannotEatMenu(final String coachName) {
+  public static void printInputUneatableMenus(final String coachName) {
     System.out.println();
-    System.out.printf("%s %s\n", coachName, Message.INPUT_CANNOT_EAT_MENU_SUFFIX);
+    System.out.printf("%s %s\n", coachName, Message.INPUT_UNEATABLE_MENU_SUFFIX);
   }
 
   // TODO: 메뉴 추천 결과 렌더링 추가

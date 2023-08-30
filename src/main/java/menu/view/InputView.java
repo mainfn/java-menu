@@ -16,8 +16,8 @@ public final class InputView {
     return readIntoStringList();
   }
 
-  public static List<String> inputCannotEatMenus(final String coachName) {
-    OutputView.printInputCannotEatMenu(coachName);
+  public static List<String> inputUneatableMenus(final String coachName) {
+    OutputView.printInputUneatableMenus(coachName);
 
     return readIntoStringList();
   }
