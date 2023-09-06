@@ -3,6 +3,7 @@ package menu.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public enum Menu {
   M1("규동", Category.JAPANESE),
@@ -73,5 +74,13 @@ public enum Menu {
         .filter(menu -> menu.name.equals(name))
         .findFirst()
         .orElseThrow(() -> new IllegalArgumentException("[ERROR] 존재하지 않는 메뉴명입니다."));
+  }
+
+  // 주어진 카테고리에 속하는 메뉴를 List<String> 형태로 반환
+  public static List<String> findMenuNamesByCategory(final Category category) {
+    return menus.stream()
+        .filter(menu -> menu.category.equals(category))
+        .map(menu -> menu.name)
+        .collect(Collectors.toList());
   }
 }
