@@ -15,6 +15,7 @@ public final class Coaches {
     return new Coaches(coaches);
   }
 
+
   private void validateCoachesCount(final List<Coach> coaches) {
     if (coaches == null || coaches.size() < 2 || coaches.size() > 5) {
       throw new IllegalStateException("[ERROR] 코치는 최소 2명, 최대 5명까지 식사를 함께 한다.");
