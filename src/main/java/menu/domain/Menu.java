@@ -83,4 +83,8 @@ public enum Menu {
         .map(menu -> menu.name)
         .collect(Collectors.toList());
   }
+
+  public String getName() {
+    return name;
+  }
 }

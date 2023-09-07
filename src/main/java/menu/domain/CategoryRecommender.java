@@ -18,19 +18,24 @@ public final class CategoryRecommender {
     final Category pickedCategory = randomCategoryPicker.pick();
     // 같은 카테고리는 최대 2개까지 추천 가능
     // 만약 동일한 카테고리가 이미 2개 존재하면 재추천 결과를 반환
-    if (hasMoreThanTwoCategories(pickedCategory)) {
+    if (hasMoreThanOneCategories(pickedCategory)) {
       return recommend();
     }
+    recommendedCategories.add(pickedCategory);
     return pickedCategory;
   }
 
-  private boolean hasMoreThanTwoCategories(final Category category) {
+  private boolean hasMoreThanOneCategories(final Category category) {
     return recommendedCategories.stream()
-        .filter(c -> c.equals(category))
-        .count() >= 2;
+        .filter(category::equals)
+        .count() > 1;
   }
 
   public boolean canRecommendMore() {
     return recommendedCategories.size() < 5;
+  }
+
+  public List<Category> getRecommendedCategories() {
+    return recommendedCategories;
   }
 }

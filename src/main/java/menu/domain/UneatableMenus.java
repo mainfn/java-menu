@@ -31,7 +31,7 @@ public final class UneatableMenus {
   public void validateMenusDuplication(final List<Menu> uneatableMenu) {
     for (final Menu menu : uneatableMenu) {
       final boolean isDuplicateMenu = uneatableMenu.stream()
-          .filter(m -> m.equals(menu))
+          .filter(menu::equals)
           .count() > 1;
 
       if (isDuplicateMenu) {
@@ -43,6 +43,6 @@ public final class UneatableMenus {
 
   public boolean canEat(final Menu menu) {
     return menus.stream()
-        .noneMatch(m -> m.equals(menu));
+        .noneMatch(menu::equals);
   }
 }
