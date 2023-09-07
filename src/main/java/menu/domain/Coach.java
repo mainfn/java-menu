@@ -34,6 +34,16 @@ public final class Coach {
       final RandomMenuPicker randomMenuPicker,
       final Category category
   ) {
-    recommendedMenus.add(randomMenuPicker, category);
+    // 임의의 메뉴 생성
+    final Menu menu = randomMenuPicker.pickByCategory(category);
+
+    // 먹을 수 없는 메뉴거나 이미 추천 메뉴로 등록 되어 있으면 재귀 호출
+    if (!uneatableMenus.canEat(menu) || recommendedMenus.isDuplicateMenu(menu)) {
+      addRecommendedMenu(randomMenuPicker, category);
+      return;
+    }
+
+    // 가능하면 등록
+    recommendedMenus.add(menu);
   }
 }
