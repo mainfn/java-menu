@@ -30,7 +30,7 @@ public final class CategoryRecommender {
         .count() >= 2;
   }
 
-  private boolean canRecommendMore() {
+  public boolean canRecommendMore() {
     return recommendedCategories.size() < 5;
   }
 }

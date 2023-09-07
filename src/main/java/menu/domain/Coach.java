@@ -1,14 +1,13 @@
 package menu.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public final class Coach {
 
   private final String name;
+  private final UneatableMenus uneatableMenus = UneatableMenus.empty();
+  private final RecommendedMenus recommendedMenus = RecommendedMenus.empty();
 
-  private final List<Menu> uneatableMenus = new ArrayList<>();
-  private final List<Menu> recommendedMenus = new ArrayList<>();
 
   private Coach(final String name) {
     validateNameLength(name);
@@ -26,12 +25,15 @@ public final class Coach {
   }
 
   // 못 먹는 음식 추가
-  public void addUneatableMenu(final Menu menu) {
-    uneatableMenus.add(menu);
+  public void addUneatableMenu(final List<String> uneatableMenuNames) {
+    uneatableMenus.register(uneatableMenuNames);
   }
 
   // 추천 음식 추가
-  public void addRecommendedMenu(final Menu menu) {
-    recommendedMenus.add(menu);
+  public void addRecommendedMenu(
+      final RandomMenuPicker randomMenuPicker,
+      final Category category
+  ) {
+    recommendedMenus.add(randomMenuPicker, category);
   }
 }

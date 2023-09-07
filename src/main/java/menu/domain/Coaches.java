@@ -21,4 +21,17 @@ public final class Coaches {
     }
   }
 
+  // 모든 코치에게 메뉴 추천
+  public void recommend(
+      final CategoryRecommender categoryRecommender,
+      final RandomMenuPicker randomMenuPicker
+  ) {
+    while (categoryRecommender.canRecommendMore()) {
+      final Category recommendedCategory = categoryRecommender.recommend();
+
+      for (final Coach coach : coaches) {
+        coach.addRecommendedMenu(randomMenuPicker, recommendedCategory);
+      }
+    }
+  }
 }

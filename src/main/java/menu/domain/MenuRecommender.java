@@ -9,7 +9,10 @@ public final class MenuRecommender {
   }
 
   // 메뉴 추천 기능
-  public void recommend(final Coaches coaches) {
-    // 모든 코치들의 recommendedMenus에 추천 메뉴 추가
+  public void recommend(
+      final Coaches coaches,
+      final CategoryRecommender categoryRecommender
+  ) {
+    coaches.recommend(categoryRecommender, randomMenuPicker);
   }
 }
