@@ -7,25 +7,22 @@ import java.util.stream.Collectors;
 
 public final class InputView {
 
-  private static final String INPUT_DELIMITER = ",";
-
-  public static List<String> inputCoachNames() {
-    OutputView.printStartMessage();
-    OutputView.printInputCoachNames();
-
-    return readIntoStringList();
-  }
-
-  public static List<String> inputUneatableMenus(final String coachName) {
-    OutputView.printInputUneatableMenus(coachName);
-
-    return readIntoStringList();
-  }
-
-  private static List<String> readIntoStringList() {
-    return Arrays.stream(Console.readLine().trim()
-            .split(INPUT_DELIMITER))
+  public List<String> inputCoachNames() {
+    System.out.println("점심 메뉴 추천을 시작합니다.");
+    return Arrays.stream(readLine()
+            .split(","))
         .collect(Collectors.toList());
   }
-}
 
+  public List<String> inputUneatableMenuNames(final String coachName) {
+    System.out.println();
+    System.out.printf("%s(이)가 못 먹는 메뉴를 입력해 주세요.\n", coachName);
+    return Arrays.stream(readLine()
+            .split(" "))
+        .collect(Collectors.toList());
+  }
+
+  private String readLine() {
+    return Console.readLine().trim();
+  }
+}
