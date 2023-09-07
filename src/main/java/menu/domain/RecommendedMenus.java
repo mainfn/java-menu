@@ -1,6 +1,7 @@
 package menu.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public final class RecommendedMenus {
@@ -25,4 +26,7 @@ public final class RecommendedMenus {
         .anyMatch(m -> m.equals(menu));
   }
 
+  public List<Menu> getRecommendedMenus() {
+    return Collections.unmodifiableList(recommendedMenus);
+  }
 }

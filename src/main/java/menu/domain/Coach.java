@@ -47,4 +47,8 @@ public final class Coach {
     recommendedMenus.add(menu);
   }
 
+  public MenuRecommendationResult intoMenuRecommendationResult() {
+    return MenuRecommendationResult.of(name, recommendedMenus.getRecommendedMenus());
+  }
+
 }

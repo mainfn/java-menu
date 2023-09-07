@@ -1,6 +1,7 @@
 package menu.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class Coaches {
 
@@ -23,10 +24,11 @@ public final class Coaches {
   }
 
   // 모든 코치에게 메뉴 추천
-  public void recommend(
+  public MenuRecommendationResults recommend(
       final CategoryRecommender categoryRecommender,
       final RandomMenuPicker randomMenuPicker
   ) {
+
     while (categoryRecommender.canRecommendMore()) {
       final Category recommendedCategory = categoryRecommender.recommend();
 
@@ -34,5 +36,21 @@ public final class Coaches {
         coach.addRecommendedMenu(randomMenuPicker, recommendedCategory);
       }
     }
+
+    return intoMenuRecommendationResults(categoryRecommender.getRecommendedCategories());
   }
+
+  private MenuRecommendationResults intoMenuRecommendationResults(
+      final List<Category> recommendedCategories
+  ) {
+    // 모든 Coach를 MenuRecommendationResult로 치환하여 List에 저장
+    final List<MenuRecommendationResult> menuRecommendationResults =
+        coaches.stream()
+            .map(Coach::intoMenuRecommendationResult)
+            .collect(Collectors.toList());
+
+    // 위에서 만든 List와 recommendedCategories로 MenuRecommendationResults 생성
+    return MenuRecommendationResults.of(menuRecommendationResults, recommendedCategories);
+  }
+
 }
