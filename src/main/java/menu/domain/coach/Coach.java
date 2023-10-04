@@ -1,10 +1,7 @@
 package menu.domain.coach;
 
-import menu.domain.category.Category;
-import menu.domain.menu.Menu;
 import menu.domain.menu.RecommendedMenus;
 import menu.domain.menu.UneatableMenus;
-import menu.util.RecommendedMenuPicker;
 
 public abstract class Coach {
 
@@ -32,5 +29,16 @@ public abstract class Coach {
     }
   }
 
+  @Override
+  public String toString() {
+    return String.format("[ %s | %s ]",
+        name,
+        recommendedMenus.toString()
+    );
+  }
+
+  public String getName() {
+    return name;
+  }
 
 }
