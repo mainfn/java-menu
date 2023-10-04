@@ -32,4 +32,8 @@ public enum Category {
     }
     return category;
   }
+
+  public String getName() {
+    return name;
+  }
 }
