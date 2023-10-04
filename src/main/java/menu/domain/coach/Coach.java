@@ -1,17 +1,20 @@
 package menu.domain.coach;
 
+import menu.domain.category.Category;
+import menu.domain.menu.Menu;
 import menu.domain.menu.RecommendedMenus;
 import menu.domain.menu.UneatableMenus;
+import menu.util.RecommendedMenuPicker;
 
-public final class Coach {
+public abstract class Coach {
 
-  private final String name;
+  protected final String name;
 
-  private final UneatableMenus uneatableMenus;
+  protected final UneatableMenus uneatableMenus;
 
-  private final RecommendedMenus recommendedMenus;
+  protected final RecommendedMenus recommendedMenus;
 
-  private Coach(
+  protected Coach(
       final String name,
       final UneatableMenus uneatableMenus,
       final RecommendedMenus recommendedMenus
@@ -22,13 +25,6 @@ public final class Coach {
     this.recommendedMenus = recommendedMenus;
   }
 
-  public static Coach of(final String name) {
-    return new Coach(
-        name,
-        UneatableMenus.empty(),
-        RecommendedMenus.empty()
-    );
-  }
 
   private void validateCoachName(final String coachName) {
     if (coachName == null || coachName.length() < 2 || coachName.length() > 4) {
