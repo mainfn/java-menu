@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import menu.domain.coach.Coaches;
+import menu.domain.menu.Menu;
 import menu.view.InputView;
 
 public final class InputController {
@@ -27,5 +28,14 @@ public final class InputController {
         .collect(Collectors.toList());
 
     return Coaches.from(coachNames);
+  }
+
+  public List<Menu> inputUneatableMenusByCoachName(final String coachName) {
+    final String uneatableMenuNamesString = inputView.inputUneatableMenuNames(coachName);
+    inputValidator.validateUneatableMenuNames(uneatableMenuNamesString);
+
+    return Arrays.stream(uneatableMenuNamesString.split(","))
+        .map(Menu::of)
+        .collect(Collectors.toList());
   }
 }
