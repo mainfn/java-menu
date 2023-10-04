@@ -7,7 +7,9 @@ import static menu.domain.menu.Category.KOREAN;
 import static menu.domain.menu.Category.WESTERN;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public enum Menu {
   M1("규동", JAPENESE),
@@ -81,5 +83,11 @@ public enum Menu {
       throw new IllegalArgumentException("존재하지 않는 메뉴명입니다.");
     }
     return menu;
+  }
+
+  public static List<Menu> findMenusByCategory(final Category category) {
+    return mp.values().stream()
+        .filter(m -> m.category == category)
+        .collect(Collectors.toList());
   }
 }
