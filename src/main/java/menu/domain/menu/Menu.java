@@ -1,15 +1,16 @@
 package menu.domain.menu;
 
-import static menu.domain.menu.Category.ASIAN;
-import static menu.domain.menu.Category.CHINESE;
-import static menu.domain.menu.Category.JAPENESE;
-import static menu.domain.menu.Category.KOREAN;
-import static menu.domain.menu.Category.WESTERN;
+import static menu.domain.category.Category.ASIAN;
+import static menu.domain.category.Category.CHINESE;
+import static menu.domain.category.Category.JAPENESE;
+import static menu.domain.category.Category.KOREAN;
+import static menu.domain.category.Category.WESTERN;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import menu.domain.category.Category;
 
 public enum Menu {
   M1("규동", JAPENESE),
@@ -89,5 +90,9 @@ public enum Menu {
     return mp.values().stream()
         .filter(m -> m.category == category)
         .collect(Collectors.toList());
+  }
+
+  public String getName() {
+    return name;
   }
 }
