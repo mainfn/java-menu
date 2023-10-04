@@ -1,4 +1,4 @@
-package menu.domain.menu;
+package menu.domain.category;
 
 import java.util.HashMap;
 import java.util.Map;

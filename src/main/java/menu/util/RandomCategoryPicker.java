@@ -1,6 +1,6 @@
 package menu.util;
 
-import menu.domain.menu.Category;
+import menu.domain.category.Category;
 
 public final class RandomCategoryPicker {
 
