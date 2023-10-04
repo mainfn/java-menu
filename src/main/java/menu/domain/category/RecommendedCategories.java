@@ -1,10 +1,13 @@
 package menu.domain.category;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public final class RecommendedCategories {
 
   private final List<Category> categories;
+  private int nextCategoryIndex = 0;
 
   private RecommendedCategories(final List<Category> categories) {
     validateRecommendedCategories(categories);
@@ -32,5 +35,20 @@ public final class RecommendedCategories {
         .count() > 2;
   }
 
+  public Optional<Category> nextCategory() {
+    if (nextCategoryIndex == 5) {
+      return Optional.empty();
+    }
+    return Optional.of(categories.get(nextCategoryIndex++));
+  }
+
+  @Override
+  public String toString() {
+    return String.format("[ 카테고리 | %s ]",
+        categories.stream()
+            .map(Category::getName)
+            .collect(Collectors.joining(" | "))
+    );
+  }
 
 }

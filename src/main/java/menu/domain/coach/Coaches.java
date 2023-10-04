@@ -1,23 +1,20 @@
 package menu.domain.coach;
 
-import java.util.ArrayList;
 import java.util.List;
+import menu.domain.category.RecommendedCategories;
 
-public final class Coaches {
+public abstract class Coaches {
 
-  private final List<Coach> coaches;
+  protected final List<Coach> coaches;
 
-  private Coaches(final List<Coach> coaches) {
+  protected final RecommendedCategories recommendedCategories;
+
+  protected Coaches(
+      final List<Coach> coaches,
+      final RecommendedCategories recommendedCategories
+  ) {
     this.coaches = coaches;
+    this.recommendedCategories = recommendedCategories;
   }
 
-  public static Coaches from(final List<String> coachNames) {
-    final List<Coach> coaches = new ArrayList<>();
-
-    for (final String coachName : coachNames) {
-      coaches.add(Coach.of(coachName));
-    }
-
-    return new Coaches(coaches);
-  }
 }
