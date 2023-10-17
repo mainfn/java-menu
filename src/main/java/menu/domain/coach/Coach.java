@@ -34,4 +34,12 @@ public final class Coach {
   public boolean canRecommend(final Menu menu) {
     return uneatableMenus.isEatable(menu) && recommendedMenus.isNotDuplicate(menu);
   }
+
+  @Override
+  public String toString() {
+    return String.format("[ %s | %s ]",
+        name,
+        recommendedMenus
+    );
+  }
 }

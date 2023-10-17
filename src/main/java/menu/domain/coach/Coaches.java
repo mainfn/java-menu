@@ -2,6 +2,7 @@ package menu.domain.coach;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import menu.domain.category.Category;
 import menu.domain.category.RecommendedCategories;
 import menu.domain.menu.Menu;
@@ -32,8 +33,8 @@ public final class Coaches {
     Optional<Category> category = recommendedCategories.get();
 
     while (category.isPresent()) {
-      Category c = category.get();
-      _recommend(c, menuPicker);
+      _recommend(category.get(), menuPicker);
+      category = recommendedCategories.get();
     }
   }
 
@@ -49,4 +50,13 @@ public final class Coaches {
       coach.addRecommendedMenu(menu);
     }
   }
+
+  @Override
+  public String toString() {
+    return "[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]\n" +
+        recommendedCategories.toString() + "\n" +
+        coaches.stream().map(Coach::toString)
+            .collect(Collectors.joining("\n"));
+  }
+
 }

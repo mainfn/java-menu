@@ -43,7 +43,8 @@ public final class MainController {
 
     for (final String coachName : coachNames) {
       final UneatableMenus uneatableMenus = UneatableMenus.from(
-          inputView.inputUneatableMenuNames());
+          inputView.inputUneatableMenuNames(coachName)
+      );
       coaches.add(Coach.of(coachName, uneatableMenus));
     }
 
