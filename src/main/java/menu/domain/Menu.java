@@ -1,6 +1,7 @@
 package menu.domain;
 
 import static menu.domain.Category.ASIAN;
+import static menu.domain.Category.CHINESE;
 import static menu.domain.Category.JAPENESE;
 import static menu.domain.Category.KOREAN;
 import static menu.domain.Category.WESTERN;
