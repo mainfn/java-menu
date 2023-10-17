@@ -1,5 +1,5 @@
 package menu.view;
 
-public class InputView {
+public final class InputView {
 
 }

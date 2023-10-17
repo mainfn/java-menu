@@ -1,5 +1,5 @@
 package menu.controller;
 
-public class MainController {
+public final class MainController {
 
 }
