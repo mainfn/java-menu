@@ -1,13 +1,17 @@
-package menu.domain;
+package menu.domain.menu;
 
-import static menu.domain.Category.ASIAN;
-import static menu.domain.Category.CHINESE;
-import static menu.domain.Category.JAPENESE;
-import static menu.domain.Category.KOREAN;
-import static menu.domain.Category.WESTERN;
+import static menu.domain.category.Category.ASIAN;
+import static menu.domain.category.Category.CHINESE;
+import static menu.domain.category.Category.JAPENESE;
+import static menu.domain.category.Category.KOREAN;
+import static menu.domain.category.Category.WESTERN;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import menu.domain.category.Category;
 
 public enum Menu {
   M1("규동", JAPENESE),
@@ -57,10 +61,12 @@ public enum Menu {
   M45("파니니", WESTERN);
 
   private static final Map<String, Menu> mp = new HashMap<>();
+  private static final List<Menu> menus = new ArrayList<>();
 
   static {
     for (final Menu menu : values()) {
       mp.put(menu.name, menu);
+      menus.add(menu);
     }
   }
 
@@ -81,6 +87,12 @@ public enum Menu {
       throw new IllegalArgumentException("존재하지 않는 메뉴명입니다.");
     }
     return menu;
+  }
+
+  public static List<Menu> getMenuNamesByCategory(final Category category) {
+    return menus.stream()
+        .filter(menu -> menu.category == category)
+        .collect(Collectors.toList());
   }
 
   public String getName() {
