@@ -8,16 +8,23 @@ public final class Coach {
 
   private final String name;
 
-  private final UneatableMenus uneatableMenus = UneatableMenus.empty();
+  private final UneatableMenus uneatableMenus;
 
   private final RecommendedMenus recommendedMenus = RecommendedMenus.empty();
 
-  private Coach(final String name) {
+  private Coach(
+      final String name,
+      final UneatableMenus uneatableMenus
+  ) {
     this.name = name;
+    this.uneatableMenus = uneatableMenus;
   }
 
-  public static Coach of(final String name) {
-    return new Coach(name);
+  public static Coach of(
+      final String name,
+      final UneatableMenus uneatableMenus
+  ) {
+    return new Coach(name, uneatableMenus);
   }
 
   public void addRecommendedMenu(final Menu menu) {

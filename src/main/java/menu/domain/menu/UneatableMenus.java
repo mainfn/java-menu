@@ -13,8 +13,14 @@ public final class UneatableMenus {
     this.uneatableMenus = uneatableMenus;
   }
 
-  public static UneatableMenus empty() {
-    return new UneatableMenus(new ArrayList<>());
+  public static UneatableMenus from(final List<String> uneatableMenuNames) {
+    final List<Menu> uneatableMenus = new ArrayList<>();
+
+    for (final String uneatableMenuName : uneatableMenuNames) {
+      uneatableMenus.add(Menu.of(uneatableMenuName));
+    }
+
+    return new UneatableMenus(uneatableMenus);
   }
 
   private static void validateLength(final List<Menu> uneatableMenus) {
