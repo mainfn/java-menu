@@ -1,9 +1,7 @@
-package menu.domain.rand;
+package menu.domain.category;
 
 import java.util.ArrayList;
 import java.util.List;
-import menu.domain.category.Category;
-import menu.domain.category.RecommendedCategories;
 
 public final class CategoriesRecommender {
 

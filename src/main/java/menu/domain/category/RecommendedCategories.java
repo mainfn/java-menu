@@ -13,4 +13,8 @@ public final class RecommendedCategories {
   public static RecommendedCategories of(final List<Category> categories) {
     return new RecommendedCategories(categories);
   }
+
+  public Category get(final int index) {
+    return categories.get(index);
+  }
 }

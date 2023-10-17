@@ -1,8 +1,7 @@
-package menu.domain.rand;
+package menu.domain.menu;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import menu.domain.category.Category;
-import menu.domain.menu.Menu;
 
 public final class MenuPicker {
 

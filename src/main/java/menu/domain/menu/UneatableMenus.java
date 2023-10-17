@@ -35,4 +35,9 @@ public final class UneatableMenus {
     validateDuplication(menus);
     uneatableMenus.addAll(menus);
   }
+
+  public boolean isEatable(final Menu menu) {
+    return uneatableMenus.stream()
+        .noneMatch(m -> m == menu);
+  }
 }

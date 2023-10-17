@@ -1,6 +1,6 @@
-package menu.domain.rand;
+package menu.domain.category;
 
-import menu.domain.category.Category;
+import menu.domain.rand.NumberPicker;
 
 public final class CategoryPicker {
 
