@@ -1,6 +1,5 @@
 package menu.domain.coach;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import menu.domain.category.Category;
@@ -22,16 +21,10 @@ public final class Coaches {
     this.recommendedCategories = recommendedCategories;
   }
 
-  public static Coaches from(
-      final List<String> coachNames,
+  public static Coaches of(
+      final List<Coach> coaches,
       final RecommendedCategories recommendedCategories
   ) {
-    final List<Coach> coaches = new ArrayList<>();
-
-    for (final String coachName : coachNames) {
-      coaches.add(Coach.of(coachName));
-    }
-
     return new Coaches(coaches, recommendedCategories);
   }
 
