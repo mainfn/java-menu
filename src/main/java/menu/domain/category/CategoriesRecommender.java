@@ -25,7 +25,7 @@ public final class CategoriesRecommender {
   }
 
 
-  public boolean canRecommend(
+  private boolean canRecommend(
       final List<Category> categories,
       final Category category
   ) {
