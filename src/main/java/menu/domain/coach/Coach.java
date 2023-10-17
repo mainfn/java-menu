@@ -1,5 +1,6 @@
 package menu.domain.coach;
 
+import menu.domain.menu.Menu;
 import menu.domain.menu.RecommendedMenus;
 import menu.domain.menu.UneatableMenus;
 
@@ -19,4 +20,11 @@ public final class Coach {
     return new Coach(name);
   }
 
+  public void addRecommendedMenu(final Menu menu) {
+    recommendedMenus.add(menu);
+  }
+
+  public boolean canRecommend(final Menu menu) {
+    return uneatableMenus.isEatable(menu) && recommendedMenus.isNotDuplicate(menu);
+  }
 }
